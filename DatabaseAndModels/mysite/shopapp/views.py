@@ -1,5 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from shopapp.models import Product, Order  # Импортируем нужные модели
 
-def index(request):
-    return HttpResponse("<h1>Главная страница магазина</h1><ul><li><a href='/products/'>Список продуктов</a></li><li><a href='/orders/'>Список заказов</a></li></ul>")
+# Функция для отображения списка продуктов
+def product_list(request):
+    products = Product.objects.all()  # Получаем все продукты
+    return render(request, 'shopapp/product_list.html', {'products': products})
+
+# Функция для отображения списка заказов
+def order_list(request):
+    orders = Order.objects.all()  # Получаем все заказы
+    return render(request, 'shopapp/order_list.html', {'orders': orders})
