@@ -1,12 +1,15 @@
 from django.shortcuts import render
-from shopapp.models import Product, Order  # Импортируем нужные модели
+from django.http import HttpResponse, HttpResponseBadRequest
 
-# Функция для отображения списка продуктов
-def product_list(request):
-    products = Product.objects.all()  # Получаем все продукты
-    return render(request, 'shopapp/product_list.html', {'products': products})
+MAX_FILE_SIZE = 1 * 1024 * 1024  # 1 МБ
 
-# Функция для отображения списка заказов
-def order_list(request):
-    orders = Order.objects.all()  # Получаем все заказы
-    return render(request, 'shopapp/order_list.html', {'orders': orders})
+def upload_file_view(request):
+    if request.method == 'POST':
+        uploaded_file = request.FILES.get('file')
+        if not uploaded_file:
+            return HttpResponseBadRequest("Файл не был загружен.")
+        if uploaded_file.size > MAX_FILE_SIZE:
+            return HttpResponseBadRequest("Файл превышает 1 МБ.")
+        # можно сохранить файл или просто подтвердить
+        return HttpResponse("Файл принят.")
+    return render(request, 'upload.html')

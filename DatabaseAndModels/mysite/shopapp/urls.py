@@ -1,7 +1,13 @@
+from django.contrib import admin
 from django.urls import path
-from . import views  # Убедись, что ты правильно импортировал views
+from django.http import HttpResponse
+from shopapp.views import upload_file_view
+
+def index(request):
+    return HttpResponse("Главная страница работает!")
 
 urlpatterns = [
-    path('products/', views.product_list, name='product_list'),  # Это должно работать
-    path('orders/', views.order_list, name='order_list'),
+    path('admin/', admin.site.urls),
+    path('', index),
+    path('upload/', upload_file_view),  # ← добавь этот маршрут
 ]

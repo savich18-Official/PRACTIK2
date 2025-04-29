@@ -48,9 +48,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'shopapp.middleware.ThrottleMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
+
+
 
 TEMPLATES = [
     {
