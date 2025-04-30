@@ -1,10 +1,11 @@
 from timeit import default_timer
 
 from django.contrib.auth.models import Group
-from django.http import HttpResponse, HttpRequest
-from django.shortcuts import render
+from django.http import HttpRequest
+from django.shortcuts import render, redirect
 
 from .models import Product, Order
+from .forms import ProductForm, OrderForm  # импортируем формы
 
 
 def shop_index(request: HttpRequest):
@@ -39,3 +40,27 @@ def orders_list(request: HttpRequest):
         "orders": Order.objects.select_related("user").prefetch_related("products").all(),
     }
     return render(request, 'shopapp/orders-list.html', context=context)
+
+
+# ✅ Новая view-функция: создание продукта
+def create_product(request: HttpRequest):
+    if request.method == 'POST':
+        form = ProductForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('products_list')  # или на другой путь, если хочешь
+    else:
+        form = ProductForm()
+    return render(request, 'shopapp/product_create.html', {'form': form})
+
+
+# ✅ Новая view-функция: создание заказа
+def create_order(request: HttpRequest):
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('orders_list')
+    else:
+        form = OrderForm()
+    return render(request, 'shopapp/order_create.html', {'form': form})
