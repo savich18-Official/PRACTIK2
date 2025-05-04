@@ -1,12 +1,25 @@
 from django.urls import path
-
-from .views import shop_index, groups_list, products_list, orders_list
-
-app_name = "shopapp"
+from shop.views.products import (
+    ProductListView, ProductDetailView, ProductCreateView,
+    ProductUpdateView, ProductArchiveView
+)
+from shop.views.orders import (
+    OrderListView, OrderDetailView, OrderCreateView,
+    OrderUpdateView, OrderDeleteView
+)
 
 urlpatterns = [
-    path("", shop_index, name="index"),
-    path("groups/", groups_list, name="groups_list"),
-    path("products/", products_list, name="products_list"),
-    path("orders/", orders_list, name="orders_list"),
+    # Продукты
+    path('products/', ProductListView.as_view(), name='product_list'),
+    path('products/create/', ProductCreateView.as_view(), name='product_create'),
+    path('products/<int:pk>/', ProductDetailView.as_view(), name='product_detail'),
+    path('products/<int:pk>/update/', ProductUpdateView.as_view(), name='product_update'),
+    path('products/<int:pk>/archive/', ProductArchiveView.as_view(), name='product_archive'),
+
+    # Заказы
+    path('orders/', OrderListView.as_view(), name='order_list'),
+    path('orders/create/', OrderCreateView.as_view(), name='order_create'),
+    path('orders/<int:pk>/', OrderDetailView.as_view(), name='order_detail'),
+    path('orders/<int:pk>/update/', OrderUpdateView.as_view(), name='order_update'),
+    path('orders/<int:pk>/delete/', OrderDeleteView.as_view(), name='order_delete'),
 ]
