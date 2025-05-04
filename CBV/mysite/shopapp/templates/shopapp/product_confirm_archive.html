@@ -1,0 +1,7 @@
+<h1>Архивировать продукт</h1>
+<p>Вы уверены, что хотите архивировать "{{ product.name }}"?</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Да, архивировать</button>
+  <a href="{% url 'product_detail' product.pk %}">Отмена</a>
+</form>

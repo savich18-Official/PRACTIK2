@@ -1,0 +1,16 @@
+<h1>Заказ #{{ object.pk }}</h1>
+<p>Пользователь: {{ object.user.username }}</p>
+<p>Адрес доставки: {{ object.delivery_address }}</p>
+<p>Промокод: {{ object.promocode }}</p>
+<p>Создан: {{ object.created_at }}</p>
+
+<h3>Товары:</h3>
+<ul>
+  {% for product in object.products.all %}
+    <li>{{ product.name }} — {{ product.price }}₽</li>
+  {% endfor %}
+</ul>
+
+<a href="{% url 'order_list' %}">Назад</a> |
+<a href="{% url 'order_update' object.pk %}">Редактировать</a> |
+<a href="{% url 'order_delete' object.pk %}">Удалить</a>
