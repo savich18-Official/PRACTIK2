@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Практическая работа</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Подключаем шрифт Roboto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- Хедер -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <div class="menu">
+          <a href="#">Услуги</a>
+          <a href="#">Портфолио</a>
+          <a href="#">Стоимость</a>
+        </div>
+        <div class="contact">
+          <span>+7 (999) 123-45-67</span>
+          <button class="open-popup">Заказать звонок</button>
+        </div>
+      </nav>
+
+      <div class="hero">
+        <div class="hero-text">
+          <h1>Дмитрий Алексеев</h1>
+          <p>Frontend-разработчик и верстальщик</p>
+          <button>Узнать больше</button>
+        </div>
+        <div class="hero-image">
+          <img src="manchik/man.png" alt="Фото" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Услуги -->
+  <section class="services container">
+    <h2>Что я делаю</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="icons/1.png" alt="" />
+        <p>Вёрстка сайтов по макетам</p>
+      </div>
+      <div class="card">
+        <img src="icons/2.png" alt="" />
+        <p>Адаптивная вёрстка под устройства</p>
+      </div>
+      <div class="card">
+        <img src="icons/3.png" alt="" />
+        <p>Интеграция и логика на JavaScript</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Примеры -->
+  <section class="portfolio container">
+    <h2>Примеры работ</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="primeri/e1.png" alt="" />
+        <p>Сайт психолога</p>
+      </div>
+      <div class="card">
+        <img src="primeri/e2.png" alt="" />
+        <p>Интернет-магазин</p>
+      </div>
+      <div class="card">
+        <img src="primeri/e3.png" alt="" />
+        <p>Лендинг</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Синий блок -->
+  <section class="banner">
+    <h2>Сайт под все устройства и браузеры</h2>
+    <p>*Сроки и стоимость зависят от макета и ТЗ</p>
+  </section>
+
+  <!-- Футер -->
+  <footer class="footer">
+    <div class="container footer-flex">
+      <div class="footer-menu">
+        <a href="#">Услуги</a>
+        <a href="#">Портфолио</a>
+        <a href="#">Стоимость</a>
+      </div>
+      <div class="footer-contacts">
+        <p>dmitry@example.com</p>
+        <p>+7 (999) 123-45-67</p>
+      </div>
+      <div class="footer-social">
+        <a href="#"><img src="social/telegram.png" alt="Telegram" /></a>
+        <a href="#"><img src="social/vk.png" alt="VK" /></a>
+        <a href="#"><img src="social/you.png" alt="YouTube" /></a>
+          <a href="#"><img src="social/fb.png" alt="Facebook" /></a>
+          <a href="#"><img src="social/inst.png" alt="Instagram" /></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Всплывающее окно -->
+  <div class="popup-container">
+    <div class="popup">
+      <input type="text" placeholder="Введите ваше имя" />
+      <input type="email" placeholder="Введите email" />
+      <button id="submit-btn">Отправить</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
