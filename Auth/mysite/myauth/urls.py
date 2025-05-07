@@ -4,7 +4,7 @@ from .views import CustomLogoutView, set_cookie_view, get_cookie_view, set_sessi
 
 urlpatterns = [
     path('login/', LoginView.as_view(
-        template_name='myauth/login.html',
+        template_name='accounts/login.html',
         redirect_authenticated_user=True
     ), name='login'),
 
