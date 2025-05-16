@@ -19,6 +19,7 @@ app_name = "shopapp"
 
 # DRF API router
 router = DefaultRouter()
+
 router.register(r'products', ProductViewSet, basename='api-products')
 router.register(r'orders', OrderViewSet, basename='api-orders')
 

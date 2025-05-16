@@ -129,3 +129,4 @@ class OrderViewSet(ModelViewSet):
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
     filterset_fields = ['status', 'created_at']
     ordering_fields = ['created_at', 'total_price']
+
