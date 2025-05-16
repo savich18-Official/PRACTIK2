@@ -1,0 +1,23 @@
+msgid "Product"
+msgstr "Товар"
+
+msgid "Products"
+msgstr "Товары"
+
+msgid "Order"
+msgstr "Заказ"
+
+msgid "Orders"
+msgstr "Заказы"
+
+msgid "Product Details"
+msgstr "Детали товара"
+
+msgid "This product is made with care and quality."
+msgstr "Этот продукт изготовлен с заботой и качеством."
+
+msgid "This product has %(image_count)s image."
+msgid_plural "This product has %(image_count)s images."
+msgstr[0] "У этого товара %(image_count)s изображение."
+msgstr[1] "У этого товара %(image_count)s изображения."
+msgstr[2] "У этого товара %(image_count)s изображений."
