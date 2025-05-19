@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'myauth.apps.MyauthConfig',
     'rest_framework',
     'django_filters',
-    'ShopApp'
+    'blogapp',
 ]
 
 MIDDLEWARE = [
