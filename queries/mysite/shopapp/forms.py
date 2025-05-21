@@ -1,5 +1,5 @@
 from django import forms
-
+from django import forms
 from shopapp.models import Product
 
 
@@ -11,3 +11,5 @@ class ProductForm(forms.ModelForm):
     images = forms.ImageField(
         widget=forms.ClearableFileInput(attrs={"multiple": True}),
     )
+class OrderImportForm(forms.Form):
+    file = forms.FileField()
