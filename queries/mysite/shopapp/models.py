@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
-
+from django.urls import reverse
 
 def product_preview_directory_path(instance: "Product", filename: str) -> str:
     return "products/product_{pk}/preview/{filename}".format(
@@ -12,6 +12,11 @@ def product_preview_directory_path(instance: "Product", filename: str) -> str:
 class Product(models.Model):
     class Meta:
         ordering = ["name", "price"]
+        # поля модели
+        name = models.CharField(max_length=200)
+
+        def get_absolute_url(self):
+            return reverse('shopapp:product_detail', args=[str(self.pk)])
 
     name = models.CharField(max_length=100)
     description = models.TextField(null=False, blank=True)
@@ -45,3 +50,5 @@ class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT)
     products = models.ManyToManyField(Product, related_name="orders")
     receipt = models.FileField(null=True, upload_to='orders/receipts/')
+
+

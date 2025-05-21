@@ -14,6 +14,10 @@ from .forms import ProductForm
 from .models import Product, Order, ProductImage
 from .serializers import ProductSerializer
 
+from django.contrib.syndication.views import Feed
+from django.template.defaultfilters import truncatewords
+from .models import Product
+
 
 class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
@@ -136,3 +140,17 @@ class ProductsDataExportView(View):
             for product in products
         ]
         return JsonResponse({"products": products_data})
+
+class LatestProductsFeed(Feed):
+    title = "Новые товары"
+    link = "/products/latest/feed/"
+    description = "Последние добавленные товары."
+
+    def items(self):
+        return Product.objects.order_by('-id')[:5]
+
+    def item_title(self, item):
+        return item.name
+
+    def item_description(self, item):
+        return truncatewords(item.description, 20)
